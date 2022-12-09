@@ -1,6 +1,8 @@
 package com.spring.C13S1PC.controller;
 
 import com.spring.C13S1PC.domain.Product;
+import com.spring.C13S1PC.exception.ProductAlreadyExistException;
+import com.spring.C13S1PC.exception.ProductNotFoundException;
 import com.spring.C13S1PC.service.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -8,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/vi")
+@RequestMapping("/api/v1")
 public class ProductController {
 
     private IProductService productService;
@@ -44,7 +46,7 @@ public class ProductController {
 
     @PostMapping("/products")
 
-    public ResponseEntity<?> saveProduct(@RequestBody Product product){
+    public ResponseEntity<?> saveProduct(@RequestBody Product product) throws ProductAlreadyExistException {
         return new ResponseEntity<>(productService.saveProduct(product),HttpStatus.CREATED);
     }
 
@@ -54,7 +56,7 @@ public class ProductController {
     }
 
     @DeleteMapping("/products/{productId}")
-    public ResponseEntity<?> deleteProduct(@PathVariable int productId){
+    public ResponseEntity<?> deleteProduct(@PathVariable int productId) throws ProductNotFoundException {
         return new ResponseEntity<>(productService.deleteProductByProductId(productId),HttpStatus.OK);
     }
 }
