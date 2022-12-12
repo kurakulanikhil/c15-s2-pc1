@@ -4,9 +4,11 @@ import com.spring.C13S1PC.filter.JwFilter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
+@EnableEurekaClient
 public class C13S1PcApplication {
 
 	public static void main(String[] args) {
