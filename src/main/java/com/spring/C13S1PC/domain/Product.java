@@ -5,14 +5,14 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 
 
-@Document
 public class Product {
 
-    @Id
+
     private int productId;
     private String productName;
     private String productDescriprtion;
     private double amountInStock;
+
 
     public Product() {
     }
